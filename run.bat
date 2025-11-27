@@ -16,7 +16,7 @@ IF NOT EXIST "%JAVAFX_PATH%" (
 )
 
 echo Compiling Flappy Bird Game...
-javac --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics -d out src\*.java
+javac --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics,javafx.media -d out src\*.java
 
 IF %ERRORLEVEL% NEQ 0 (
     echo.
@@ -29,6 +29,6 @@ echo Compilation successful!
 echo.
 echo Launching Flappy Bird Game...
 echo.
-java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics -cp out FlappyBirdGame
+java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics,javafx.media -cp out FlappyBirdGame
 
 pause
