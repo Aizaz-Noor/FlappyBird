@@ -6,6 +6,9 @@ A Java-based Flappy Bird game using JavaFX with smooth gameplay and particle eff
 
 - **Smooth Gameplay**: 60 FPS game loop for responsive controls
 - **Particle Effects**: Beautiful particle explosions on collision
+- **Sound System**: 🎵 Background music, danger alarms, and meme sound effects
+- **Avatar System**: 🐦 Multiple bird avatars to choose from
+- **Settings Menu**: ⚙️ In-game menu to toggle sounds and change avatars
 - **Dynamic Obstacles**: Randomly generated pipes with varying gaps
 - **Score Tracking**: Real-time score display
 - **Pause/Resume**: Space bar to pause and resume gameplay
@@ -50,6 +53,9 @@ A Java-based Flappy Bird game using JavaFX with smooth gameplay and particle eff
 ## Controls 🎮
 
 - **SPACE** - Flap / Start Game / Pause
+- **S** - Open Settings Menu
+- **A** - Change Avatar
+- **1, 2, 3** - Switch Sound Effects
 - **R** - Restart after Game Over
 - **ESC** - Exit game
 
@@ -62,7 +68,11 @@ FlappyBird/
 │   ├── Pipe.java           # Obstacle generation
 │   ├── GameEngine.java     # Core game loop and rendering
 │   ├── ParticleEffect.java # Particle system
+│   ├── SoundManager.java   # Audio management system
+│   ├── AvatarManager.java  # Player avatar system
+│   ├── SettingsMenu.java   # In-game configuration
 │   └── FlappyBirdGame.java # Main entry point
+├── resources/              # Game assets (sounds, images)
 ├── run.bat                 # Quick run script
 ├── setup-and-run.ps1       # Automated setup script
 └── README.md
@@ -74,6 +84,7 @@ FlappyBird/
 - **Collision Detection**: Rectangle-based collision system
 - **Rendering**: JavaFX Canvas for smooth 2D graphics
 - **Game Loop**: Delta time-based updates for consistent gameplay
+- **Audio**: JavaFX Media for sound effects and music
 
 ## Author 👨‍💻
 
