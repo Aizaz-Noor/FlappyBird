@@ -49,15 +49,37 @@ public class Bird {
     }
 
     /**
-     * Render the bird with attractive gradient and rotation
+     * Render the bird with avatar or attractive gradient and rotation
      */
-    public void render(GraphicsContext gc) {
+    public void render(GraphicsContext gc, AvatarManager avatarManager) {
         gc.save();
 
         // Translate to bird center for rotation
         gc.translate(x, y);
         gc.rotate(rotation);
 
+        // Render avatar face if available
+        if (avatarManager != null && avatarManager.hasAvatars()) {
+            // Render the avatar face
+            avatarManager.renderAvatar(gc, x, y, rotation, BIRD_SIZE);
+        } else {
+            // Fallback to default bird rendering
+            renderDefaultBird(gc);
+        }
+
+        // Always render beak (on top of avatar for realistic effect)
+        gc.setFill(Color.rgb(255, 100, 0));
+        double[] beakX = { BIRD_SIZE / 2, BIRD_SIZE / 2 + 10, BIRD_SIZE / 2 };
+        double[] beakY = { -3, 0, 3 };
+        gc.fillPolygon(beakX, beakY, 3);
+
+        gc.restore();
+    }
+
+    /**
+     * Render default bird appearance (when no avatars are loaded)
+     */
+    private void renderDefaultBird(GraphicsContext gc) {
         // Create attractive gradient for bird body
         LinearGradient gradient = new LinearGradient(
                 0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
@@ -74,14 +96,6 @@ public class Bird {
         gc.fillOval(BIRD_SIZE / 4 - 8, -BIRD_SIZE / 4 - 4, 8, 8);
         gc.setFill(Color.BLACK);
         gc.fillOval(BIRD_SIZE / 4 - 6, -BIRD_SIZE / 4 - 2, 4, 4);
-
-        // Add beak
-        gc.setFill(Color.rgb(255, 100, 0));
-        double[] beakX = { BIRD_SIZE / 2, BIRD_SIZE / 2 + 10, BIRD_SIZE / 2 };
-        double[] beakY = { -3, 0, 3 };
-        gc.fillPolygon(beakX, beakY, 3);
-
-        gc.restore();
     }
 
     /**
