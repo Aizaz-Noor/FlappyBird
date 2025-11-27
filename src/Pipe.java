@@ -115,4 +115,22 @@ public class Pipe {
     public static double getWidth() {
         return PIPE_WIDTH;
     }
+
+    /**
+     * Get the distance from the bird to this pipe (horizontal distance)
+     */
+    public double getDistanceToBird(double birdX) {
+        // Distance to the center of the pipe
+        double pipeCenterX = x + PIPE_WIDTH / 2;
+        return Math.abs(birdX - pipeCenterX);
+    }
+
+    /**
+     * Check if bird is near this pipe (for proximity sound trigger)
+     */
+    public boolean isNearBird(double birdX, double threshold) {
+        // Check if bird is approaching the pipe from the left
+        double distanceToLeft = x - birdX;
+        return distanceToLeft > 0 && distanceToLeft < threshold;
+    }
 }
