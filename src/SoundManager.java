@@ -79,6 +79,9 @@ public class SoundManager {
 
             // Load special sounds
             highAltitudeSound = loadSingleSound("resources/sounds/high_altitude.m4a", "High Altitude Sound");
+            if (highAltitudeSound != null) {
+                highAltitudeSound.setVolume(1.0); // Max volume for this specific sound
+            }
             milestoneSound = loadSingleSound("resources/sounds/milestone.m4a", "Milestone Sound");
 
         } catch (Exception e) {
