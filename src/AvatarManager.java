@@ -91,12 +91,32 @@ public class AvatarManager {
         gc.closePath();
         gc.clip();
 
-        // Draw avatar image
+        // Draw avatar image with smart cropping to avoid distortion
         Image currentAvatar = avatars.get(currentAvatarIndex);
+        double imgW = currentAvatar.getWidth();
+        double imgH = currentAvatar.getHeight();
+
+        // Calculate source crop (square)
+        double cropSize = Math.min(imgW, imgH);
+        double sx, sy;
+
+        if (imgW > imgH) {
+            // Landscape: crop center
+            sx = (imgW - cropSize) / 2;
+            sy = 0;
+        } else {
+            // Portrait: crop top-center (faces are usually higher up)
+            sx = 0;
+            sy = (imgH - cropSize) / 4; // Offset slightly from top, but not center
+        }
+
         double avatarSize = size * 1.1; // Slightly larger to fill the circle
+
+        // Draw cropped image
         gc.drawImage(currentAvatar,
-                -avatarSize / 2, -avatarSize / 2,
-                avatarSize, avatarSize);
+                sx, sy, cropSize, cropSize, // Source: crop square
+                -avatarSize / 2, -avatarSize / 2, // Dest: centered
+                avatarSize, avatarSize); // Dest: scaled to bird size
 
         gc.restore();
     }

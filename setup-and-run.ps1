@@ -40,7 +40,7 @@ Write-Host ""
 Write-Host "Compiling Flappy Bird Game..." -ForegroundColor Yellow
 
 $javafxLib = "$extractPath\lib"
-$compileCmd = "javac --module-path `"$javafxLib`" --add-modules javafx.controls,javafx.graphics -d out src\*.java"
+$compileCmd = "javac --module-path `"$javafxLib`" --add-modules javafx.controls,javafx.graphics,javafx.media -d out src\*.java"
 
 Invoke-Expression $compileCmd
 
@@ -50,7 +50,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "Launching Flappy Bird Game..." -ForegroundColor Cyan
     Write-Host ""
     
-    $runCmd = "java --module-path `"$javafxLib`" --add-modules javafx.controls,javafx.graphics -cp out FlappyBirdGame"
+    $runCmd = "java --module-path `"$javafxLib`" --add-modules javafx.controls,javafx.graphics,javafx.media -cp out FlappyBirdGame"
     Invoke-Expression $runCmd
 }
 else {

@@ -18,10 +18,17 @@ public class Pipe {
     private static final double SPEED = 3;
     private static final double PIPE_CAP_HEIGHT = 30;
 
-    public Pipe(double x, double gapY) {
+    private int index;
+
+    public Pipe(double x, double gapY, int index) {
         this.x = x;
         this.gapY = gapY;
+        this.index = index;
         this.scored = false;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     /**
