@@ -42,6 +42,7 @@ public class GameEngine {
     private boolean wasInDanger;
     private boolean wasTooHigh;
     private int lastMilestoneScore;
+    private int pipeCounter; // Track number of pipes spawned
 
     private long lastPipeTime;
     private static final long PIPE_SPAWN_INTERVAL = 2_000_000_000L;
@@ -79,7 +80,10 @@ public class GameEngine {
         lastPipeTime = 0;
         wasInDanger = false;
         wasTooHigh = false;
+        wasInDanger = false;
+        wasTooHigh = false;
         lastMilestoneScore = 0;
+        pipeCounter = 0;
 
         setupInput();
         startGameLoop();
@@ -147,7 +151,10 @@ public class GameEngine {
         lastPipeTime = System.nanoTime();
         wasInDanger = false;
         wasTooHigh = false;
+        wasInDanger = false;
+        wasTooHigh = false;
         lastMilestoneScore = 0;
+        pipeCounter = 0;
     }
 
     private void restartGame() {
@@ -178,7 +185,7 @@ public class GameEngine {
 
         if (currentTime - lastPipeTime > PIPE_SPAWN_INTERVAL) {
             double gapY = random.nextDouble() * (CANVAS_HEIGHT - GROUND_HEIGHT - 300) + 200;
-            pipes.add(new Pipe(CANVAS_WIDTH, gapY));
+            pipes.add(new Pipe(CANVAS_WIDTH, gapY, ++pipeCounter));
             lastPipeTime = currentTime;
         }
 
@@ -195,7 +202,8 @@ public class GameEngine {
                 gameOver(true); // true = play sound
             }
 
-            if (pipe.isNearBird(bird.getX(), DANGER_PROXIMITY)) {
+            // Danger sound - ONLY for the 3rd pillar
+            if (pipe.getIndex() == 3 && pipe.isNearBird(bird.getX(), DANGER_PROXIMITY)) {
                 inDangerNow = true;
                 if (!wasInDanger) {
                     soundManager.playDangerSound();

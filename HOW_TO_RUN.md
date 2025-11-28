@@ -1,102 +1,53 @@
-# IntelliJ IDEA Setup & Run Instructions
+# How to Run the Game 🎮
 
-## Method 1: Run via IntelliJ IDEA
+Hey! Here's how you can get the game running on your machine. I've made it as simple as possible.
 
-### 1. Open Project in IntelliJ
-1. Open IntelliJ IDEA
-2. Click "Open" and select the `FlappyBird` folder
+## The Easy Way (Recommended) 🚀
 
-### 2. Configure JavaFX
-1. Go to **File → Project Structure** (Ctrl+Alt+Shift+S)
-2. Click "Libraries" on the left
-3. Click the "+ (minus if you fail this time delete it first by click on minus )" button and select "Java"
-4. Browse to your JavaFX SDK: `FlappyBird/javafx-sdk-23.0.1/lib`
-5. Select all JAR files and click OK
-6. Click "Apply" and "OK"
+If you're on Windows, just double-click the `setup-and-run.ps1` file. It'll handle everything for you—downloading JavaFX, setting up the paths, and launching the game.
 
-### 3. Configure Run Configuration
-1. Go to **Run → Edit Configurations**
-2. Click the "+" button → "Application"
-3. Set the following:
-   - **Name**: Flappy Bird Game
-   - **Main class**: `FlappyBirdGame`
-   - **VM options**: 
-     ```
-     --module-path "javafx-sdk-23.0.1\lib" --add-modules javafx.controls,javafx.graphics,javafx.media
-     ```
-   - **Working directory**: Your FlappyBird project root folder
-4. Click "Apply" and "OK"
+If that doesn't work or you prefer doing things manually, check out the options below.
 
-### 4. Run the Game
-- Click the green "Run" button (Shift+F10)
-- Or use **Run → Run 'FlappyBirdGame'**
+## Running via IntelliJ IDEA 💻
 
----
+1.  Open the project folder in IntelliJ.
+2.  Go to **File > Project Structure > Libraries**.
+3.  Add the `lib` folder from the JavaFX SDK (it's inside the `javafx-sdk-23.0.1` folder).
+4.  Run `FlappyBirdGame.java`.
 
-## Method 2: Run via Script (Command Line)
+**Note:** You might need to add these VM options in your Run Configuration if it complains about modules:
+```
+--module-path "javafx-sdk-23.0.1\lib" --add-modules javafx.controls,javafx.graphics,javafx.media
+```
 
-### Windows (run.bat)
-```batch
+## Running via Command Line ⌨️
+
+If you're a terminal person, you can use the `run.bat` script I included. Just type:
+```cmd
 .\run.bat
 ```
 
-**If run.bat doesn't work:**
-1. Make sure you're in the FlappyBird directory
-2. Check that `javafx-sdk-23.0.1` folder exists
-3. Try running commands manually:
-```batch
+Or if you want to compile it yourself manually:
+
+```cmd
 javac --module-path "javafx-sdk-23.0.1\lib" --add-modules javafx.controls,javafx.graphics,javafx.media -d out\production\FlappyBird src\*.java
 
 java --module-path "javafx-sdk-23.0.1\lib" --add-modules javafx.controls,javafx.graphics,javafx.media -cp out\production\FlappyBird FlappyBirdGame
 ```
 
----
+## Controls 🕹️
 
-## Game Controls
+-   **Space / Click**: Jump
+-   **S**: Open Settings
+-   **A**: Change Avatar (put your friends' faces in!)
+-   **1, 2, 3**: Switch between sound effects
+-   **R**: Restart when you die
+-   **Esc**: Quit
 
-| Key | Action |
-|-----|--------|
-| SPACE / CLICK | Jump |
-| 1 | Switch Danger Sound |
-| 2 | Switch Safe Sound |
-| 3 | Switch Game Over Sound |
-| A | Switch Avatar |
-| S | Settings Menu |
-| ESC | Close Settings |
+## Troubleshooting 🔧
 
----
+-   **No Sound?** Make sure your audio files are in `resources/sounds/`.
+-   **No Avatars?** Check `resources/avatars/`. The game looks for images there.
+-   **Weird Errors?** Usually it's JavaFX not being found. Double-check the path in the run command.
 
-## Troubleshooting
-
-### "Module not found" error
-- Make sure JavaFX SDK is in the correct location
-- Verify all three modules are included: `javafx.controls`, `javafx.graphics`, `javafx.media`
-
-### No sound
-- Check that `.m4a` and `.mp4` files are in `resources/sounds/`
-- Verify `javafx.media` module is included in VM options
-
-### Avatars not showing
-- Check that image files (`.png`, `.jpg`) are in `resources/avatars/`
-- Restart the game after adding new images
-
----
-
-## Project Structure
-```
-FlappyBird/
-├── src/
-│   ├── FlappyBirdGame.java (Main class)
-│   ├── GameEngine.java
-│   ├── Bird.java
-│   ├── Pipe.java
-│   ├── SoundManager.java
-│   ├── AvatarManager.java
-│   └── ...
-├── resources/
-│   ├── sounds/
-│   └── avatars/
-├── javafx-sdk-23.0.1/
-├── out/production/FlappyBird/ (compiled classes)
-└── run.bat
-```
+Enjoy the game! Let me know if you run into any issues.

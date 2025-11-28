@@ -1,95 +1,50 @@
-# FlappyBird 🐦
+# Flappy Bird (JavaFX Edition) 🐦
 
-A Java-based Flappy Bird game using JavaFX with smooth gameplay and particle effects.
+Welcome to my take on the classic Flappy Bird game! I built this using JavaFX because I wanted to create something smooth, responsive, and a bit more feature-rich than the usual clones out there.
 
-## Features ✨
+## What's Cool About This Version? ✨
 
-- **Smooth Gameplay**: 60 FPS game loop for responsive controls
-- **Particle Effects**: Beautiful particle explosions on collision
-- **Sound System**: 🎵 Background music, danger alarms, and meme sound effects
-- **Avatar System**: 🐦 Multiple bird avatars to choose from
-- **Settings Menu**: ⚙️ In-game menu to toggle sounds and change avatars
-- **Dynamic Obstacles**: Randomly generated pipes with varying gaps
-- **Score Tracking**: Real-time score display
-- **Pause/Resume**: Space bar to pause and resume gameplay
-- **Game Over Screen**: Restart option after collision
+It's not just a basic copy-paste. I added some fun stuff:
 
-## Prerequisites 📋
+-   **Particle Effects**: When you jump or crash, there are cool little particle explosions. It just feels satisfying.
+-   **Sound System**: I added background music and some funny meme sounds that play when you're in danger or crash.
+-   **Custom Avatars**: You can actually put your own face (or your friends') on the bird! Just drop an image in the folder and you're good to go.
+-   **Settings Menu**: Press 'S' in-game to tweak things without restarting.
+-   **Smooth Gameplay**: It runs at a solid 60 FPS, so if you die, it's definitely your fault (sorry!).
 
-- **Java 22** or higher
-- **JavaFX SDK 23.0.1** (will be downloaded automatically by setup script)
+## Getting Started 🚀
 
-## Quick Start 🚀
+I made a script to handle the boring setup stuff.
 
-### Windows
+### The Quick Way (Windows)
+Just run the `setup-and-run.ps1` script. It'll download the JavaFX libraries you need and launch the game. Easy peasy.
 
-#### Option 1: Automated Setup (Recommended)
-```powershell
-.\setup-and-run.ps1
-```
-
-#### Option 2: Manual Run (if JavaFX already set up)
-```cmd
-.\run.bat
-```
-
-### Manual Setup
-
-1. **Download JavaFX SDK**:
-   - Download from: https://gluonhq.com/products/javafx/
-   - Extract to project root as `javafx-sdk-23.0.1`
-
-2. **Compile**:
-   ```cmd
-   mkdir out
-   javac -d out --module-path javafx-sdk-23.0.1\lib --add-modules javafx.controls src\*.java
-   ```
-
-3. **Run**:
-   ```cmd
-   java -cp out --module-path javafx-sdk-23.0.1\lib --add-modules javafx.controls FlappyBirdGame
-   ```
+### The Manual Way
+If you prefer doing it yourself, check out `HOW_TO_RUN.md` for the step-by-step instructions.
 
 ## Controls 🎮
 
-- **SPACE** - Flap / Start Game / Pause
-- **S** - Open Settings Menu
-- **A** - Change Avatar
-- **1, 2, 3** - Switch Sound Effects
-- **R** - Restart after Game Over
-- **ESC** - Exit game
+-   **Space / Click**: Flap your wings!
+-   **S**: Open the Settings menu
+-   **A**: Cycle through different avatars
+-   **1, 2, 3**: Switch up the sound effects
+-   **R**: Restart instantly after you crash
+-   **Esc**: Rage quit (I mean, exit the game)
 
-## Project Structure 📁
+## Customizing It 🎨
 
-```
-FlappyBird/
-├── src/
-│   ├── Bird.java           # Bird entity with physics
-│   ├── Pipe.java           # Obstacle generation
-│   ├── GameEngine.java     # Core game loop and rendering
-│   ├── ParticleEffect.java # Particle system
-│   ├── SoundManager.java   # Audio management system
-│   ├── AvatarManager.java  # Player avatar system
-│   ├── SettingsMenu.java   # In-game configuration
-│   └── FlappyBirdGame.java # Main entry point
-├── resources/              # Game assets (sounds, images)
-├── run.bat                 # Quick run script
-├── setup-and-run.ps1       # Automated setup script
-└── README.md
-```
+Want to add your own sounds or faces?
+Check out `RESOURCES_GUIDE.md`. I wrote a quick guide on how to drop your own files in so they show up in the game.
 
-## How It Works 🔧
+## Tech Stack 🛠️
 
-- **Physics**: Custom gravity and jump mechanics
-- **Collision Detection**: Rectangle-based collision system
-- **Rendering**: JavaFX Canvas for smooth 2D graphics
-- **Game Loop**: Delta time-based updates for consistent gameplay
-- **Audio**: JavaFX Media for sound effects and music
-
-## Author 👨‍💻
-
-**Aizaz Noor**
+-   **Java 22**: The core language.
+-   **JavaFX 23**: For all the graphics and UI.
+-   **JavaFX Media**: For the audio engine.
 
 ## License 📄
 
-This project is open source and available for educational purposes.
+Feel free to use this code for whatever! Learning, modifying, or just messing around. It's open source.
+
+---
+*Built with ☕ and code by Aizaz Noor*
