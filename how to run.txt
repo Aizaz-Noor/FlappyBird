@@ -1,0 +1,31 @@
+# How to Run Flappy Bird
+
+## Option 1: Run with Maven (Command Line)
+**Prerequisite**: Maven must be installed and in your PATH.
+
+1. Open your terminal or command prompt in the project folder.
+2. Run the following command:
+   ```bash
+   mvn javafx:run
+   ```
+   Note: On the first run, it may take a minute to download dependencies.*
+
+## Option 2: Run with IntelliJ IDEA
+
+1. **Open Project**:
+   - Open IntelliJ IDEA.
+   - Select **Open** and choose the `pom.xml` file in the project folder.
+   - Click **Open as Project**.
+
+2. **Reload Maven**:
+   - Locate the **Maven** tab on the right sidebar.
+   - Click the **Reload All Maven Projects** (refresh icon) button to ensure dependencies are downloaded.
+
+3. **Run**:
+   - In the Project view (left sidebar), navigate to:
+     `src` -> `main` -> `java` -> `FlappyBirdGame`.
+   - Right-click `FlappyBirdGame.java` and select **Run 'FlappyBirdGame.main()'**.
+
+## Troubleshooting
+- **"mvn is not recognized"**: You need to install Maven and add it to your System PATH variables.
+- **JavaFX errors**: Ensure you are using a JDK version consistent with the project (JDK 21 or higher recommended).

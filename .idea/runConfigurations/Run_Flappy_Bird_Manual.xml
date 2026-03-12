@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Flappy Bird (Manual VM)" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="FlappyBirdGame" />
+    <module name="FlappyBird" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\jdk-24\lib&quot; --add-modules javafx.controls,javafx.media" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

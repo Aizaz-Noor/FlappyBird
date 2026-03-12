@@ -1,0 +1,54 @@
+    private void renderDynamicBackground(GraphicsContext gc) {
+        // If theme is LIGHT, always show day theme
+        if (currentTheme == Theme.LIGHT) {
+            LinearGradient skyGradient = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
+                    new Stop(0, Color.rgb(135, 206, 250)), // Light sky blue
+                    new Stop(1, Color.rgb(176, 224, 230))); // Powder blue
+            gc.setFill(skyGradient);
+            gc.fillRect(0, 0, WIDTH, HEIGHT);
+            
+            // Optional: Draw simple clouds
+            gc.setFill(Color.rgb(255, 255, 255, 0.6));
+            gc.fillOval(100, 80, 80, 40);
+            gc.fillOval(120, 70, 60, 50);
+            gc.fillOval(400, 120, 100, 50);
+            gc.fillOval(420, 110, 70, 60);
+            gc.fillOval(700, 90, 90, 45);
+            gc.fillOval(720, 80, 65, 55);
+            return;
+        }
+        
+        // DARK theme: Dynamic day/night cycle based on score
+        int cycle = 40; // 40 points for full cycle
+        int phase = Math.max(0, score) % cycle;
+        
+        Color topColor, bottomColor;
+        
+        if (phase < 10) { // Day
+            topColor = Color.rgb(135, 206, 250);
+            bottomColor = Color.rgb(176, 224, 230);
+        } else if (phase < 20) { // Sunset
+            topColor = Color.rgb(255, 140, 0); // Dark Orange
+            bottomColor = Color.rgb(255, 69, 0); // Red Orange
+        } else if (phase < 30) { // Night
+            topColor = Color.BLACK;
+            bottomColor = Color.rgb(25, 25, 112); // Midnight Blue
+        } else { // Dawn
+            topColor = Color.rgb(0, 0, 139); // Dark Blue
+            bottomColor = Color.rgb(70, 130, 180); // Steel Blue
+        }
+        
+        LinearGradient skyGradient = new LinearGradient(0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
+                new Stop(0, topColor), new Stop(1, bottomColor));
+        
+        gc.setFill(skyGradient);
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
+        
+        // Draw stars if Night or Dawn
+        if (phase >= 20) {
+            for (double[] star : stars) {
+                gc.setFill(Color.rgb(255, 255, 255, 0.3 + random.nextDouble() * 0.5));
+                gc.fillOval(star[0], star[1], star[2], star[2]);
+            }
+        }
+    }

@@ -58,11 +58,11 @@ public class ParticleEffect {
     /**
      * Update all particles
      */
-    public void update() {
+    public void update(double dt) {
         Iterator<Particle> iterator = particles.iterator();
         while (iterator.hasNext()) {
             Particle p = iterator.next();
-            p.update();
+            p.update(dt);
             if (p.isDead()) {
                 iterator.remove();
             }
@@ -105,10 +105,10 @@ public class ParticleEffect {
             this.maxLife = maxLife;
         }
 
-        public void update() {
-            x += vx;
-            y += vy;
-            vy += 0.2; // Gravity effect
+        public void update(double dt) {
+            x += vx * dt * 60; // Scale to match previous frame-based speed (assuming 60 FPS baseline)
+            y += vy * dt * 60;
+            vy += 0.2 * dt * 60; // Gravity effect
             life--;
         }
 

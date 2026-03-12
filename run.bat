@@ -1,34 +1,17 @@
 @echo off
-REM Flappy Bird Game - Build and Run Script
+REM Flappy Bird Game - Run Script (via Maven)
 
-REM Set your JavaFX SDK path here
-SET JAVAFX_PATH=javafx-sdk-23.0.1\lib
+echo Launching Flappy Bird...
+echo.
 
-REM Check if JavaFX path exists
-IF NOT EXIST "%JAVAFX_PATH%" (
-    echo ERROR: JavaFX SDK not found at %JAVAFX_PATH%
-    echo.
-    echo Please download JavaFX SDK from: https://gluonhq.com/products/javafx/
-    echo Then update the JAVAFX_PATH variable in this script.
-    echo.
-    pause
-    exit /b 1
-)
-
-echo Compiling Flappy Bird Game...
-javac --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics,javafx.media -d out src\*.java
+REM Run using the local Maven wrapper
+".\maven\apache-maven-3.9.6\bin\mvn" clean javafx:run
 
 IF %ERRORLEVEL% NEQ 0 (
     echo.
-    echo Compilation failed!
+    echo ERROR: Game failed to launch!
     pause
     exit /b 1
 )
-
-echo Compilation successful!
-echo.
-echo Launching Flappy Bird Game...
-echo.
-java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.graphics,javafx.media -cp out FlappyBirdGame
 
 pause

@@ -24,8 +24,15 @@ hs_err_pid*
 replay_pid*
 
 # IDE files
-.idea/
+.idea/*
+!.idea/runConfigurations/
 *.iml
+
+# Maven build output
+target/
+
+# Local Maven installation (users should install Maven themselves)
+maven/
 
 # Compiled output
 out/

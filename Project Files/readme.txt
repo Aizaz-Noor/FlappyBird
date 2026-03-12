@@ -22,29 +22,28 @@ Just run the `setup-and-run.ps1` script. It'll download the JavaFX libraries you
 ### The Manual Way
 If you prefer doing it yourself, check out `HOW_TO_RUN.md` for the step-by-step instructions.
 
-## Controls 🎮
+## Controls 
 
--   **Space / Click**: Flap your wings!
--   **S**: Open the Settings menu
--   **A**: Cycle through different avatars
--   **1, 2, 3**: Switch up the sound effects
--   **R**: Restart instantly after you crash
--   **Esc**: Rage quit (I mean, exit the game)
+-   Space / Click: Flap your wings!
+-   S: Open the Settings menu
+-   A: Cycle through different avatars
+-   1, 2, 3: Switch up the sound effects
+-   R: Restart instantly after you crash
+-   Esc: Rage quit (I mean, exit the game)
 
-## Customizing It 🎨
+## Customizing It 
 
 Want to add your own sounds or faces?
 Check out `RESOURCES_GUIDE.md`. I wrote a quick guide on how to drop your own files in so they show up in the game.
 
-## Tech Stack 🛠️
+## Tech Stack 
+-   Java 22: The core language.
+-   JavaFX 23: For all the graphics and UI.
+-   JavaFX Media: For the audio engine.
 
--   **Java 22**: The core language.
--   **JavaFX 23**: For all the graphics and UI.
--   **JavaFX Media**: For the audio engine.
-
-## License 📄
+## License 
 
 Feel free to use this code for whatever! Learning, modifying, or just messing around. It's open source.
 
 ---
-*Built with ☕ and code by Aizaz Noor*
+Buil & code by Aizaz Noor
